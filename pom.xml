@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+    <parent>
+        <groupId>com.open.cloud</groupId>
+        <artifactId>open-cloud-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>./open-cloud-dependencies</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.open.cloud</groupId>
+    <artifactId>open-cloud-framework</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+    </properties>
+
+    <modules>
+        <module>open-cloud-common</module>
+        <module>open-cloud-core</module>
+        <module>open-cloud-database</module>
+        <module>open-cloud-dependencies</module>
+        <module>open-cloud-dubbo</module>
+        <module>open-cloud-elasticsearch</module>
+        <module>open-cloud-hibernate</module>
+        <module>open-cloud-kafka</module>
+        <module>open-cloud-monitor</module>
+        <module>open-cloud-mybatis</module>
+        <module>open-cloud-nacos</module>
+        <module>open-cloud-rabbitmq</module>
+        <module>open-cloud-redis</module>
+        <module>open-cloud-rocketmq</module>
+        <module>open-cloud-rsocket</module>
+        <module>open-cloud-security</module>
+        <module>open-cloud-shiro</module>
+        <module>open-cloud-solr</module>
+        <module>open-cloud-swagger</module>
+        <module>open-cloud-tomcat</module>
+        <module>open-cloud-transaction</module>
+        <module>open-cloud-undertow</module>
+        <module>open-cloud-webflux</module>
+        <module>open-cloud-zookeeper</module>
+    </modules>
+
+
+    <dependencies>
+        <!-- 热部署模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- 测试模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <!-- develop 环境 -->
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.active>develop</profile.active>
+                <logback.dir>./app/logs</logback.dir>
+            </properties>
+        </profile>
+        <profile>
+            <!-- preview环境 -->
+            <id>test</id>
+            <properties>
+                <profile.active>test</profile.active>
+                <logback.dir>./app/logs</logback.dir>
+            </properties>
+        </profile>
+        <profile>
+            <!-- preview环境 -->
+            <id>preview</id>
+            <properties>
+                <profile.active>preview</profile.active>
+                <logback.dir>./app/logs</logback.dir>
+            </properties>
+        </profile>
+        <profile>
+            <!-- product 环境 -->
+            <id>product</id>
+            <properties>
+                <profile.active>product</profile.active>
+                <logback.dir>./app/logs</logback.dir>
+            </properties>
+        </profile>
+    </profiles>
+</project>
